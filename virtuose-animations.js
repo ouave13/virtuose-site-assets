@@ -23,6 +23,17 @@
   }
 
   function init() {
+    // Correctifs CSS : footer du template (textes geants dans colonnes etroites)
+    // et empilement de la section contact au-dessus de la photo d'equipe
+    var fix = document.createElement('style');
+    fix.textContent = [
+      '.footer-main .display-1 { font-size: clamp(2rem, 3.2vw, 3.2rem) !important; line-height: 1.05 !important; }',
+      '.footer-main .nav-text { font-size: clamp(0.95rem, 1.2vw, 1.15rem) !important; line-height: 1.4 !important; white-space: nowrap; }',
+      '.footer-main .navigation-link { height: auto !important; min-height: 0 !important; }',
+      '.contact-section { position: relative; z-index: 2; }'
+    ].join('\n');
+    document.head.appendChild(fix);
+
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
 
