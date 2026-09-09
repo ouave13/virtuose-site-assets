@@ -43,6 +43,15 @@
       '.v2-contact-btn:hover { background-color: #efede6; color: #0f0f0f; }',
       '.v2-social:hover, .v2-footer-link:hover { color: #dcfc59; }',
       '.v2-nav-cta:hover { background-color: #ffffff; color: #0f0f0f; }',
+      /* Section clients : fond noir pour rendre les logos blancs visibles */
+      '.v2-clients { background-color: #0f0f0f !important; }',
+      '.v2-clients .v2-overline-dark { color: #efede6 !important; }',
+      '.v2-clients-grid { border-top-color: rgba(239,237,230,0.15) !important; border-left-color: rgba(239,237,230,0.15) !important; }',
+      '.v2-client-cell { border-right-color: rgba(239,237,230,0.15) !important; border-bottom-color: rgba(239,237,230,0.15) !important; }',
+      '.v2-client-logo { filter: grayscale(1) brightness(1.6); opacity: 0.8; }',
+      '.v2-client-cell:hover .v2-client-logo { filter: none; opacity: 1; }',
+      /* Responsive mobile */
+      '@media (max-width: 767px) { .v2-nav { padding: 16px 20px; } .v2-nav-mail { display: none; } .v2-hero-content, .v2-about, .v2-services, .v2-work, .v2-clients, .v2-club, .v2-contact, .v2-footer { padding-left: 20px; padding-right: 20px; } .v2-service-row { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; } .v2-about-img-offset { margin-top: 0; } .v2-hero-bottom { flex-direction: column; align-items: flex-start; } }',
       'html { scroll-behavior: smooth; }',
       'body { margin: 0; }'
     ].join('\n');
