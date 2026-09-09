@@ -111,7 +111,8 @@
 
       /* Logo header */
       '.v2-nav-logo { height: 82px !important; width: auto !important; }',
-      '.v2-nav { padding: 16px 36px !important; }',
+      '.v2-nav { padding: 16px 36px !important; mix-blend-mode: normal !important; }',
+      '.v2-nav-logo, .v2-nav-right { mix-blend-mode: difference; }',
 
       /* Hero Cyphr : fond creme, video en lamelles sous le header, titre qui chevauche */
       '.v2-hero { background: #efede6 !important; overflow: hidden !important; }',
