@@ -57,7 +57,6 @@
     ].join('\n');
     document.head.appendChild(css);
 
-    initV2();
     if (!window.gsap || !window.ScrollTrigger) return;
 
     // Marquee defilant infini
@@ -108,6 +107,12 @@
   }
 
   function init() {
+    // Page V2 : styles et animations dedies, on ne touche pas au reste
+    if (document.querySelector('.v2-hero')) {
+      initV2();
+      return;
+    }
+
     // Correctifs CSS : footer du template (textes geants dans colonnes etroites)
     // et empilement de la section contact au-dessus de la photo d'equipe
     var fix = document.createElement('style');
