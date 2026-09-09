@@ -49,8 +49,8 @@
 
     // 3. Typo cinétique : titres révélés ligne par ligne
     if (window.SplitType) {
-      document.querySelectorAll('h1, h2, h3').forEach(function (el) {
-        if (el.closest('.w-richtext')) return;
+      document.querySelectorAll('.top-hero h1, .page-content h2, .page-content h3, .contact-section h2, .contact-section h3').forEach(function (el) {
+        if (el.closest('.w-richtext') || el.closest('.footer-main')) return;
         var split = new SplitType(el, { types: 'lines', lineClass: 'anim-line' });
         if (!split.lines || !split.lines.length) return;
         split.lines.forEach(function (l) {
@@ -67,8 +67,8 @@
     }
 
     // 4. Reveal doux des paragraphes et blocs contact
-    gsap.utils.toArray('p, .contact-field, .contact-calendly, .contact-infos').forEach(function (el) {
-      if (el.closest('.w-richtext')) return;
+    gsap.utils.toArray('.page-content p, .contact-section p, .contact-field, .contact-calendly, .contact-infos').forEach(function (el) {
+      if (el.closest('.w-richtext') || el.closest('.footer-main')) return;
       gsap.from(el, {
         y: 32, autoAlpha: 0, duration: 0.8, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 92%', once: true }
