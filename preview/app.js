@@ -2,11 +2,10 @@
 (function () {
   try {
     sessionStorage.removeItem('virtuoseSeen');
-    if (sessionStorage.getItem('virtuoseSkipOnce') === '1') {
-      document.documentElement.classList.add('skip-intro');
-      sessionStorage.removeItem('virtuoseSkipOnce');
-    }
+    sessionStorage.removeItem('virtuoseSkipOnce');
   } catch (e) {}
+
+  document.documentElement.classList.add('skip-intro');
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var video = document.querySelector('.hero-video');
@@ -14,8 +13,7 @@
   var started = Date.now();
   var videoReady = !video;
   var hidden = false;
-  var skipIntro = document.documentElement.classList.contains('skip-intro');
-  if (loader && !skipIntro) document.body.classList.add('is-loading');
+  var skipIntro = true;
 
   function hideLoader() {
     if (hidden) return;
@@ -93,12 +91,7 @@
     }
   }
 
-  if (skipIntro) {
-    hideLoader();
-  } else {
-    setTimeout(maybeHide, 2100);
-    setTimeout(hideLoader, 5200);
-  }
+  hideLoader();
 
   document.querySelectorAll('a.footer-social[href="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); });
@@ -115,8 +108,20 @@
 
   var menuBtn = document.querySelector('.nav-menu');
   var menu = document.getElementById('siteMenu');
+  var scrollLockY = 0;
 
   function setMenu(open) {
+    if (open) {
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollLockY + 'px';
+      document.body.style.width = '100%';
+    } else if (document.body.classList.contains('is-menu-open')) {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+    }
     document.body.classList.toggle('is-menu-open', open);
     if (menuBtn) {
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -124,6 +129,25 @@
     }
     if (menu) menu.setAttribute('aria-hidden', open ? 'false' : 'true');
   }
+
+  var callSticky = document.querySelector('.call-sticky');
+  var heroEl = document.querySelector('.hero');
+  var footerEl = document.querySelector('.footer');
+  var clubCta = document.querySelector('.club-cta');
+  function syncSticky() {
+    if (!callSticky) return;
+    var show = true;
+    if (heroEl) show = heroEl.getBoundingClientRect().bottom < 96;
+    if (footerEl && footerEl.getBoundingClientRect().top < window.innerHeight - 72) show = false;
+    if (clubCta) {
+      var cr = clubCta.getBoundingClientRect();
+      if (cr.top < window.innerHeight - 20 && cr.bottom > window.innerHeight - 96) show = false;
+    }
+    callSticky.classList.toggle('is-on', show);
+  }
+  syncSticky();
+  window.addEventListener('scroll', syncSticky, { passive: true });
+  window.addEventListener('resize', syncSticky);
 
   if (menuBtn && menu) {
     menuBtn.addEventListener('click', function () {
@@ -159,10 +183,33 @@
       e.preventDefault();
       var msg = (document.getElementById('contactMsg') || {}).value || '';
       var mail = (document.getElementById('contactMail') || {}).value || '';
+      var btn = contactForm.querySelector('.contact-go');
       var body = 'Email : ' + mail + '\n\n' + msg;
-      window.location.href = 'mailto:hello@agencevirtuose.fr?subject=' +
+      var mailto = 'mailto:hello@agencevirtuose.fr?subject=' +
         encodeURIComponent('Nouveau projet') +
         '&body=' + encodeURIComponent(body);
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Envoi…';
+      }
+      fetch('https://formsubmit.co/ajax/hello@agencevirtuose.fr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: mail,
+          message: msg,
+          _subject: 'Nouveau projet'
+        })
+      }).then(function (r) { return r.json(); }).then(function () {
+        contactForm.reset();
+        if (btn) btn.textContent = 'C’est parti !';
+      }).catch(function () {
+        window.location.href = mailto;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Ça part !';
+        }
+      });
     });
   }
 
@@ -270,34 +317,12 @@
     requestAnimationFrame(workTick);
   }
 
-  function accentLast(el, text) {
-    var lastIdx = -1;
-    var k;
-    for (k = text.length - 1; k >= 0; k--) {
-      if (/[A-Za-zÀ-ÿ]/.test(text[k])) {
-        lastIdx = k;
-        break;
-      }
-    }
-    el.textContent = '';
-    if (lastIdx < 0) {
-      el.textContent = text;
-      return;
-    }
-    el.appendChild(document.createTextNode(text.slice(0, lastIdx)));
-    var acc = document.createElement('span');
-    acc.className = 'char-accent';
-    acc.textContent = text[lastIdx];
-    el.appendChild(acc);
-    el.appendChild(document.createTextNode(text.slice(lastIdx + 1)));
-  }
-
   function typeHeading(el) {
     if (el.getAttribute('data-typed') === '1') return;
     el.setAttribute('data-typed', '1');
     var full = el.getAttribute('data-text') || el.textContent.trim();
     if (reduce) {
-      accentLast(el, full);
+      el.textContent = full;
       return;
     }
     var cursor = el.querySelector('.type-cursor');
@@ -316,7 +341,8 @@
         setTimeout(step, 30 + Math.random() * 170);
         return;
       }
-      accentLast(el, full);
+      el.textContent = full;
+      el.removeAttribute('aria-label');
       el.appendChild(cursor);
       cursor.classList.add('is-out');
       setTimeout(function () {
@@ -329,6 +355,7 @@
   document.querySelectorAll('[data-split]').forEach(function (el) {
     var text = el.textContent.trim();
     el.setAttribute('data-text', text);
+    el.setAttribute('aria-label', text);
     if (reduce) return;
     el.textContent = '';
     var cursor = document.createElement('span');
@@ -338,7 +365,7 @@
     el.appendChild(cursor);
   });
 
-  var revealSel = '[data-split], [data-rise], .reveal, .club-copy, .club-cta, .contact-form, .contact-cal';
+  var revealSel = '[data-split], [data-rise], .reveal, .club-copy, .club-shot, .club-cta, .contact-form, .contact-aside';
   var targets = document.querySelectorAll(revealSel);
 
   var fold = document.querySelector('.about-fold');

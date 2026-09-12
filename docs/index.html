@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="skip-intro">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Virtuose</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agence Virtuose</title>
+  <meta name="description" content="Virtuose, l’agence créative des marques food. Photo, vidéo, community management et stratégie social media à Paris.">
+  <meta name="theme-color" content="#ecece9">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=da29">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Saira+Extra+Condensed:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=da42">
   <script>
     try {
       sessionStorage.removeItem('virtuoseSeen');
@@ -22,15 +28,7 @@
     html.skip-intro body.is-loading { overflow: auto; }
   </style>
 </head>
-<body class="is-loading">
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader-mark">
-      <img class="loader-ghost" src="logos/agence-noir.png" alt="">
-      <img class="loader-fill loader-fill-a" src="logos/agence-orange-rose.png" alt="">
-      <img class="loader-fill loader-fill-b" src="logos/agence-violet-citron.png" alt="">
-      <img class="loader-fill loader-fill-c" src="logos/agence-rose-violet.png" alt="">
-    </div>
-  </div>
+<body>
   <nav class="nav">
     <a class="nav-logo" href="index.html" aria-label="Agence Virtuose">
       <img src="logos/agence-orange-rose.png" alt="Agence Virtuose">
@@ -39,6 +37,7 @@
     </a>
     <button class="nav-menu" type="button" aria-expanded="false" aria-controls="siteMenu">Menu</button>
   </nav>
+  <a class="call-sticky" href="mailto:hello@agencevirtuose.fr">On s’appelle ?</a>
   <div class="menu" id="siteMenu" aria-hidden="true">
     <nav class="menu-list">
       <a class="menu-link" href="#qui-sommes-nous"><span>Qui sommes-nous</span></a>
@@ -52,7 +51,7 @@
 
   <header class="hero" id="top">
     <div class="hero-frame">
-      <video class="hero-video" muted loop playsinline autoplay preload="auto"
+      <video class="hero-video" muted loop playsinline webkit-playsinline autoplay preload="metadata" poster="hero-poster.jpg"
         src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11acf25b2d7a918ab083b_header-virtuose-1080p.mp4"></video>
     </div>
   </header>
@@ -95,11 +94,11 @@
     <div class="about-stage">
       <p class="about-stamp" data-rise>On filme l’assiette.<br>On la met dans le feed.<br>On donne envie d’y aller.</p>
       <div class="reveal reveal-a reveal-color" data-speed="0.07">
-        <img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg" alt="">
+        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg" alt="Tournage Sauce">
       </div>
       <p class="about-menu" data-rise>On shoot.<br>On filme.<br>On tient le fil<br>du feed.</p>
       <div class="reveal reveal-b reveal-bw" data-speed="-0.05">
-        <img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d3ec_roar-burger-2.jpg" alt="">
+        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d3ec_roar-burger-2.jpg" alt="Burger Roar">
       </div>
     </div>
     <div class="about-fold">
@@ -148,99 +147,99 @@
       <div class="work-track">
         <div class="work-line">
           <a class="work-card" href="projets/black-and-white.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f07efaad81744dbe5f_black-and-white-5.jpg" alt="Black & White"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f07efaad81744dbe5f_black-and-white-5.jpg" alt="Black & White"></span>
             <span class="work-cap">Black & White</span>
           </a>
           <a class="work-card" href="projets/aroma-caffe.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119eebe97da6a34387fb1_aroma-caffe-2.jpg" alt="Aroma Caffè"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119eebe97da6a34387fb1_aroma-caffe-2.jpg" alt="Aroma Caffè"></span>
             <span class="work-cap">Aroma Caffè</span>
           </a>
           <a class="work-card" href="projets/nach.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7dbe97da6a3438d797_nach-2.jpg" alt="NACH!"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7dbe97da6a3438d797_nach-2.jpg" alt="NACH!"></span>
             <span class="work-cap">NACH!</span>
           </a>
           <a class="work-card" href="projets/nonna-teresa.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7ebffc1115355cd151_nonna-teresa-5.jpg" alt="Nonna Teresa"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7ebffc1115355cd151_nonna-teresa-5.jpg" alt="Nonna Teresa"></span>
             <span class="work-cap">Nonna Teresa</span>
           </a>
           <a class="work-card" href="projets/buna.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f16c03ecf840f667ec_buna-2.jpg" alt="Buna"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f16c03ecf840f667ec_buna-2.jpg" alt="Buna"></span>
             <span class="work-cap">Buna</span>
           </a>
           <a class="work-card" href="projets/subway.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aab25b2d7a918aaf83c_subway-5.jpg" alt="Subway"></span>
+            <span class="work-shot"><img decoding="async" fetchpriority="high" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aab25b2d7a918aaf83c_subway-5.jpg" alt="Subway"></span>
             <span class="work-cap">Subway</span>
           </a>
           <a class="work-card" href="projets/fatburger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a4ff3164524c527e55c_fatburger-2.jpg" alt="Fatburger"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a4ff3164524c527e55c_fatburger-2.jpg" alt="Fatburger"></span>
             <span class="work-cap">Fatburger</span>
           </a>
           <a class="work-card" href="projets/roar-burger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa4a0a94d240dfcfbfb_roar-burger-3.jpg" alt="Roar"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa4a0a94d240dfcfbfb_roar-burger-3.jpg" alt="Roar"></span>
             <span class="work-cap">Roar</span>
           </a>
           <a class="work-card" href="projets/hash-burger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a506c0f9545753fbddf_hash-burger-2.jpg" alt="Hash"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a506c0f9545753fbddf_hash-burger-2.jpg" alt="Hash"></span>
             <span class="work-cap">Hash</span>
           </a>
           <a class="work-card" href="projets/kova.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7c7efaad81744df709_kova-2.jpg" alt="Kova"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7c7efaad81744df709_kova-2.jpg" alt="Kova"></span>
             <span class="work-cap">Kova</span>
           </a>
           <a class="work-card" href="projets/sauce.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa62715fbedc861e079_sauce-3.jpg" alt="Sauce"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa62715fbedc861e079_sauce-3.jpg" alt="Sauce"></span>
             <span class="work-cap">Sauce</span>
           </a>
           <a class="work-card" href="projets/cafe-alma.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f26c0f9545753f8e08_cafe-alma-2.jpg" alt="Café Alma"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f26c0f9545753f8e08_cafe-alma-2.jpg" alt="Café Alma"></span>
             <span class="work-cap">Café Alma</span>
           </a>
           <a class="work-card" href="projets/black-and-white.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119eff780a25750700813_black-and-white-3.jpg" alt="Black & White"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119eff780a25750700813_black-and-white-3.jpg" alt="Black & White"></span>
             <span class="work-cap">Black & White</span>
           </a>
           <a class="work-card" href="projets/aroma-caffe.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119ee5503fda884d9867d_aroma-caffe-4.jpg" alt="Aroma Caffè"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119ee5503fda884d9867d_aroma-caffe-4.jpg" alt="Aroma Caffè"></span>
             <span class="work-cap">Aroma Caffè</span>
           </a>
           <a class="work-card" href="projets/nach.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7dc02b84939661de4e_nach-4.jpg" alt="NACH!"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7dc02b84939661de4e_nach-4.jpg" alt="NACH!"></span>
             <span class="work-cap">NACH!</span>
           </a>
           <a class="work-card" href="projets/nonna-teresa.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d33a_nonna-teresa-3.jpg" alt="Nonna Teresa"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d33a_nonna-teresa-3.jpg" alt="Nonna Teresa"></span>
             <span class="work-cap">Nonna Teresa</span>
           </a>
           <a class="work-card" href="projets/buna.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f161749166798d75f9_buna-4.jpg" alt="Buna"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f161749166798d75f9_buna-4.jpg" alt="Buna"></span>
             <span class="work-cap">Buna</span>
           </a>
           <a class="work-card" href="projets/subway.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aaa25b2d7a918aaf827_subway-3.jpg" alt="Subway"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aaa25b2d7a918aaf827_subway-3.jpg" alt="Subway"></span>
             <span class="work-cap">Subway</span>
           </a>
           <a class="work-card" href="projets/fatburger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a50f780a2575070330e_fatburger-4.jpg" alt="Fatburger"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a50f780a2575070330e_fatburger-4.jpg" alt="Fatburger"></span>
             <span class="work-cap">Fatburger</span>
           </a>
           <a class="work-card" href="projets/roar-burger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa4f00ac17199749e73_roar-burger-5.jpg" alt="Roar"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa4f00ac17199749e73_roar-burger-5.jpg" alt="Roar"></span>
             <span class="work-cap">Roar</span>
           </a>
           <a class="work-card" href="projets/hash-burger.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7b79ff7784928bbb69_hash-burger-4.jpg" alt="Hash"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7b79ff7784928bbb69_hash-burger-4.jpg" alt="Hash"></span>
             <span class="work-cap">Hash</span>
           </a>
           <a class="work-card" href="projets/kova.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7c2140e15c92641990_kova-3.jpg" alt="Kova"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7c2140e15c92641990_kova-3.jpg" alt="Kova"></span>
             <span class="work-cap">Kova</span>
           </a>
           <a class="work-card" href="projets/sauce.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa6f00ac17199749f19_sauce-4.jpg" alt="Sauce"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa6f00ac17199749f19_sauce-4.jpg" alt="Sauce"></span>
             <span class="work-cap">Sauce</span>
           </a>
           <a class="work-card" href="projets/cafe-alma.html">
-            <span class="work-shot"><img src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f3845238e262b28ce4_cafe-alma-4.jpg" alt="Café Alma"></span>
+            <span class="work-shot"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f3845238e262b28ce4_cafe-alma-4.jpg" alt="Café Alma"></span>
             <span class="work-cap">Café Alma</span>
           </a>
         </div>
@@ -253,62 +252,62 @@
     <div class="clients-grid">
       <a class="client" href="projets/subway.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aaa5503fda884d9b47c_subway-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/subway.png" alt="Subway">
+        <img loading="lazy" decoding="async" src="logos/subway.png" alt="Subway">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/black-and-white.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119ef2140e15c9263ee2a_black-and-white-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/bnw.png" alt="Black & White">
+        <img loading="lazy" decoding="async" src="logos/bnw.png" alt="Black & White">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/fatburger.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a4fb6f82b96e2e3b302_fatburger-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/fatburger.png" alt="Fatburger">
+        <img loading="lazy" decoding="async" src="logos/fatburger.png" alt="Fatburger">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/aroma-caffe.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119eabe97da6a34387f21_aroma-caffe-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/aroma.png" alt="Aroma Caffè">
+        <img loading="lazy" decoding="async" src="logos/aroma.png" alt="Aroma Caffè">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/buna.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f0be97da6a3438823a_buna-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/buna.png" alt="Buna">
+        <img loading="lazy" decoding="async" src="logos/buna.png" alt="Buna">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/nach.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7cebdee10de03b9da6_nach-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/nach.png" alt="NACH!">
+        <img loading="lazy" decoding="async" src="logos/nach.png" alt="NACH!">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/nonna-teresa.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7d6c0f9545753fd5f7_nonna-teresa-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/nonna.png" alt="Nonna Teresa">
+        <img loading="lazy" decoding="async" src="logos/nonna.png" alt="Nonna Teresa">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/roar-burger.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e61749166798db201_roar-burger-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/roar.png" alt="Roar Burger">
+        <img loading="lazy" decoding="async" src="logos/roar.png" alt="Roar Burger">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/hash-burger.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a5018d56e104ffa8240_hash-burger-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/hash.png" alt="Hash Burger">
+        <img loading="lazy" decoding="async" src="logos/hash.png" alt="Hash Burger">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/kova.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7b4a1b7947708edc66_kova-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/kova.png" alt="Kova">
+        <img loading="lazy" decoding="async" src="logos/kova.png" alt="Kova">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/sauce.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/sauce.png" alt="Sauce">
+        <img loading="lazy" decoding="async" src="logos/sauce.png" alt="Sauce">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/cafe-alma.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f2a9131788b2d56643_cafe-alma-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
-        <img src="logos/alma.png" alt="Café Alma">
+        <img loading="lazy" decoding="async" src="logos/alma.png" alt="Café Alma">
         <span class="client-cta">voir le projet</span>
       </a>
     </div>
@@ -327,34 +326,39 @@
           <button class="contact-go" type="submit">Ça part !</button>
         </div>
       </form>
-      <div class="contact-cal" data-rise>
-        <span>Calendly</span>
+      <div class="contact-aside" data-rise>
+        <a class="contact-card" href="tel:+33783278261">
+          <span class="contact-card-kicker">On s’appelle</span>
+          <span class="contact-card-val">07 83 27 82 61</span>
+        </a>
+        <a class="contact-card" href="mailto:hello@agencevirtuose.fr">
+          <span class="contact-card-kicker">On s’écrit</span>
+          <span class="contact-card-val">hello@agencevirtuose.fr</span>
+        </a>
       </div>
     </div>
   </section>
 
   <section class="club" id="rejoignez-nous">
-    <h2 class="display" data-split>Rejoignez-nous</h2>
-    <div class="club-frame">
-      <img src="club-gros-gourmands.jpg" alt="T-shirt Club Gros Gourmands">
-      <p class="club-name">Gros Gourmands</p>
-    </div>
-    <div class="club-bottom">
+    <h2 class="display display-on-dark" data-split>Rejoignez-nous</h2>
+    <div class="club-board">
       <div class="club-copy" data-rise>
         <p>Le Club Gros Gourmands, c’est une communauté de plus de 200 personnes qui aiment vivre de nouvelles expériences.</p>
         <p>Participez à nos shootings, rencontrez d’autres passionnés et devenez modèle sur des projets créatifs rémunérés.</p>
         <p>Événements, coulisses de prod, avant-premières. Une aventure humaine, créative et gourmande.</p>
+        <a class="club-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScPBBNHlabCcFoORUrJ30517pAHPj2czUxGaZcl9nblQQNpNA/viewform" target="_blank" rel="noopener noreferrer">Nous rejoindre</a>
       </div>
-      <a class="club-cta" href="mailto:hello@agencevirtuose.fr?subject=Club Gros Gourmands">On s’appelle<br>?</a>
+      <figure class="club-shot" data-rise>
+        <img loading="lazy" decoding="async" src="club-gros-gourmands.jpg" alt="T-shirt Club Gros Gourmands">
+        <div class="club-pills" aria-hidden="true">
+          <span>200+ membres</span>
+          <span>Shootings rémunérés</span>
+        </div>
+      </figure>
     </div>
   </section>
 
   <footer class="footer">
-    <a class="footer-logo" href="index.html" aria-label="Agence Virtuose">
-      <img src="logos/agence-orange-rose.png" alt="Agence Virtuose">
-      <img src="logos/agence-violet-citron.png" alt="">
-      <img src="logos/agence-rose-violet.png" alt="">
-    </a>
     <div class="footer-bar">
     <nav class="footer-socials" aria-label="Réseaux sociaux">
       <a class="footer-social" href="https://www.instagram.com/virtuose.fr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-network="instagram">
@@ -386,9 +390,14 @@
         </svg>
       </a>
     </nav>
+    <a class="footer-logo" href="index.html" aria-label="Agence Virtuose">
+      <img src="logos/agence-orange-rose.png" alt="Agence Virtuose">
+      <img src="logos/agence-violet-citron.png" alt="">
+      <img src="logos/agence-rose-violet.png" alt="">
+    </a>
     <a class="footer-mail" href="mailto:hello@agencevirtuose.fr">hello@agencevirtuose.fr</a>
     </div>
-    <p class="footer-legal">All rights reserved 2026</p>
+    <p class="footer-legal">Tous droits réservés 2026</p>
   </footer>
 
   <div class="client-follow" id="clientPeek" aria-hidden="true">
@@ -397,6 +406,6 @@
   </div>
   <div class="grain" aria-hidden="true"></div>
 
-  <script src="app.js?v=da19"></script>
+  <script src="app.js?v=da22"></script>
 </body>
 </html>
