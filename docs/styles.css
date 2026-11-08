@@ -1845,6 +1845,9 @@ body.folio {
   transition: transform 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
+.mosaic a.crop-roar img { object-position: center 23%; }
+.mosaic a.crop-sauce img { object-position: center 64%; }
+
 .mosaic a:hover img,
 .mosaic a:hover video {
   transform: scale(1.06);
