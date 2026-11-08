@@ -810,10 +810,12 @@ body.is-menu-open .call-sticky {
   overflow: hidden;
 }
 
-.work-card img {
+.work-card img,
+.work-card video {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  display: block;
   transition: transform 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -830,7 +832,8 @@ body.is-menu-open .call-sticky {
   line-height: 1;
 }
 
-.work-card:hover img {
+.work-card:hover img,
+.work-card:hover video {
   transform: scale(1.06);
 }
 

@@ -235,6 +235,13 @@
       var clone = line.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       clone.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
+      clone.querySelectorAll('video').forEach(function (v) {
+        var img = document.createElement('img');
+        img.src = v.getAttribute('poster') || '';
+        img.alt = '';
+        img.decoding = 'async';
+        v.replaceWith(img);
+      });
       track.appendChild(clone);
     }
     track.classList.add('is-manual');
