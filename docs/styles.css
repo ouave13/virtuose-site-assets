@@ -846,7 +846,7 @@ body.is-menu-open .call-sticky {
 /* Clients */
 .clients {
   background: var(--ink);
-  padding: var(--section-y) 0 0;
+  padding: var(--section-y) 0 var(--gap);
   overflow: visible;
 }
 
@@ -1531,7 +1531,7 @@ body.is-menu-open .call-sticky {
   .work-card { width: 72vw; }
 
   .clients {
-    padding: var(--section-y) 20px 0;
+    padding: var(--section-y) 20px var(--gap);
   }
 
   .clients .display,
