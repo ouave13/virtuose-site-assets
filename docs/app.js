@@ -70,25 +70,6 @@
     ['touchstart', 'click'].forEach(function (ev) {
       document.addEventListener(ev, play, { once: true, passive: true });
     });
-
-    if (!reduce) {
-      var n = 15;
-      var gap = 0.22;
-      var colW = (100 - gap * (n - 1)) / n;
-      var drops = [4, 16, 7, 22, 5, 14, 10, 20, 6, 18, 8, 13, 5, 19, 9];
-      var rects = [];
-      for (var i = 0; i < n; i++) {
-        var x = i * (colW + gap);
-        rects.push('<rect x="' + x.toFixed(2) + '" y="0" width="' + colW.toFixed(2) + '" height="' + (100 - drops[i]) + '" rx="0.12"/>');
-      }
-      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">' + rects.join('') + '</svg>';
-      var uri = 'url("data:image/svg+xml;utf8,' + encodeURIComponent(svg) + '")';
-      video.style.webkitMaskImage = uri;
-      video.style.maskImage = uri;
-      video.style.webkitMaskSize = '100% 100%';
-      video.style.maskSize = '100% 100%';
-      video.style.webkitMaskRepeat = 'no-repeat';
-    }
   }
 
   hideLoader();
@@ -128,6 +109,7 @@
       menuBtn.textContent = open ? 'Fermer' : 'Menu';
     }
     if (menu) menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (typeof syncNav === 'function') syncNav();
   }
 
   var callSticky = document.querySelector('.call-sticky');
@@ -145,9 +127,24 @@
     }
     callSticky.classList.toggle('is-on', show);
   }
-  syncSticky();
-  window.addEventListener('scroll', syncSticky, { passive: true });
-  window.addEventListener('resize', syncSticky);
+  function syncNav() {
+    var dark = document.body.classList.contains('is-menu-open');
+    if (!dark && heroEl && heroEl.getBoundingClientRect().bottom > 56) dark = true;
+    if (!dark) {
+      document.querySelectorAll('.clients, .club, .footer').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < 56 && r.bottom > 8) dark = true;
+      });
+    }
+    document.body.classList.toggle('nav-on-dark', dark);
+  }
+  function syncChrome() {
+    syncSticky();
+    syncNav();
+  }
+  syncChrome();
+  window.addEventListener('scroll', syncChrome, { passive: true });
+  window.addEventListener('resize', syncChrome);
 
   if (menuBtn && menu) {
     menuBtn.addEventListener('click', function () {
@@ -163,7 +160,9 @@
 
   document.querySelectorAll('a.nav-logo, a.footer-logo').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      if (/\/projets\//.test(location.pathname)) return;
+      var path = location.pathname;
+      var onHome = /\/$|index\.html$/.test(path);
+      if (!onHome) return;
       e.preventDefault();
       setMenu(false);
       var html = document.documentElement;
@@ -213,109 +212,120 @@
     });
   }
 
-  var workRail = document.querySelector('.work-rail');
-  var workLine = document.querySelector('.work-line');
-  var workTrack = document.querySelector('.work-track');
-  if (workLine && workTrack && !workTrack.querySelector('.work-line[aria-hidden="true"]')) {
-    var workClone = workLine.cloneNode(true);
-    workClone.setAttribute('aria-hidden', 'true');
-    workClone.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-    workTrack.appendChild(workClone);
+  function playInlineVideos() {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.playsInline = true;
+      v.volume = 0;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
   }
-  if (workRail && workLine && workTrack) {
-    workTrack.classList.add('is-manual');
-    var workX = 0;
-    var workPaused = false;
-    var workHover = false;
-    var workLast = performance.now();
-    var workDrag = false;
-    var workMoved = false;
-    var workStartX = 0;
-    var workStartOff = 0;
-    var workLoop = 140000;
+  playInlineVideos();
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) playInlineVideos();
+  });
 
-    function workWidth() {
-      return workLine.getBoundingClientRect().width;
+  function bindRail(rail) {
+    var track = rail.querySelector('.work-track, .clients-track');
+    var line = rail.querySelector('.work-line, .clients-line');
+    if (!track || !line) return;
+    if (!track.querySelector('[aria-hidden="true"]')) {
+      var clone = line.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
+      track.appendChild(clone);
     }
+    track.classList.add('is-manual');
+    var x = 0;
+    var paused = false;
+    var hover = false;
+    var last = performance.now();
+    var drag = false;
+    var moved = false;
+    var startX = 0;
+    var startOff = 0;
+    var loop = rail.classList.contains('clients-rail') ? 90000 : 140000;
 
-    function workApply() {
-      var w = workWidth();
+    function width() {
+      return line.getBoundingClientRect().width;
+    }
+    function apply() {
+      var w = width();
       if (w <= 0) return;
-      workX = ((workX % w) + w) % w;
-      workTrack.style.transform = 'translate3d(' + (-workX) + 'px,0,0)';
+      x = ((x % w) + w) % w;
+      track.style.transform = 'translate3d(' + (-x) + 'px,0,0)';
     }
-
-    function workTick(now) {
-      var dt = now - workLast;
-      workLast = now;
-      if (!reduce && !workPaused && !workDrag) {
-        var w = workWidth();
-        if (w > 0) workX += (w / workLoop) * dt;
-        workApply();
+    function tick(now) {
+      var dt = now - last;
+      last = now;
+      if (!reduce && !paused && !drag) {
+        var w = width();
+        if (w > 0) x += (w / loop) * dt;
+        apply();
       }
-      requestAnimationFrame(workTick);
+      requestAnimationFrame(tick);
     }
-
-    workRail.addEventListener('mouseenter', function () {
-      workHover = true;
-      workPaused = true;
+    rail.addEventListener('mouseenter', function () {
+      hover = true;
+      paused = true;
     });
-    workRail.addEventListener('mouseleave', function () {
-      workHover = false;
-      if (!workDrag) {
-        workPaused = false;
-        workLast = performance.now();
+    rail.addEventListener('mouseleave', function () {
+      hover = false;
+      if (!drag) {
+        paused = false;
+        last = performance.now();
       }
     });
-
-    workRail.addEventListener('wheel', function (e) {
+    rail.addEventListener('wheel', function (e) {
       var dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       if (!dx) return;
       e.preventDefault();
       if (e.deltaMode === 1) dx *= 16;
-      if (e.deltaMode === 2) dx *= workRail.clientWidth;
-      workX += dx;
-      workApply();
+      if (e.deltaMode === 2) dx *= rail.clientWidth;
+      x += dx;
+      apply();
     }, { passive: false });
-
-    workRail.addEventListener('pointerdown', function (e) {
+    rail.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;
-      workDrag = true;
-      workMoved = false;
-      workStartX = e.clientX;
-      workStartOff = workX;
+      drag = true;
+      moved = false;
+      startX = e.clientX;
+      startOff = x;
     });
-    workRail.addEventListener('pointermove', function (e) {
-      if (!workDrag) return;
-      var dx = e.clientX - workStartX;
+    rail.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - startX;
       if (Math.abs(dx) > 8) {
-        if (!workMoved) {
-          workMoved = true;
-          workRail.classList.add('is-dragging');
-          try { workRail.setPointerCapture(e.pointerId); } catch (err) {}
+        if (!moved) {
+          moved = true;
+          rail.classList.add('is-dragging');
+          try { rail.setPointerCapture(e.pointerId); } catch (err) {}
         }
-        workX = workStartOff - dx;
-        workApply();
+        x = startOff - dx;
+        apply();
       }
     });
-    function workEndDrag() {
-      workDrag = false;
-      workRail.classList.remove('is-dragging');
-      if (!workHover) {
-        workPaused = false;
-        workLast = performance.now();
+    function endDrag() {
+      drag = false;
+      rail.classList.remove('is-dragging');
+      if (!hover) {
+        paused = false;
+        last = performance.now();
       }
     }
-    workRail.addEventListener('pointerup', workEndDrag);
-    workRail.addEventListener('pointercancel', workEndDrag);
-    workRail.addEventListener('click', function (e) {
-      if (!workMoved) return;
+    rail.addEventListener('pointerup', endDrag);
+    rail.addEventListener('pointercancel', endDrag);
+    rail.addEventListener('click', function (e) {
+      if (!moved) return;
       e.preventDefault();
       e.stopPropagation();
     }, true);
-
-    requestAnimationFrame(workTick);
+    requestAnimationFrame(tick);
+    playInlineVideos();
   }
+  document.querySelectorAll('.js-rail').forEach(bindRail);
 
   function typeHeading(el) {
     if (el.getAttribute('data-typed') === '1') return;
@@ -365,7 +375,7 @@
     el.appendChild(cursor);
   });
 
-  var revealSel = '[data-split], [data-rise], .reveal, .club-copy, .club-shot, .club-cta, .contact-form, .contact-aside';
+  var revealSel = '[data-split], [data-rise], .reveal, .club-copy, .club-shot, .club-collage, .club-cta, .contact-form, .contact-aside';
   var targets = document.querySelectorAll(revealSel);
 
   var fold = document.querySelector('.about-fold');
@@ -396,7 +406,7 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-  document.querySelectorAll('.about, .work, .clients, .contact, .club').forEach(function (el) {
+  document.querySelectorAll('.about, .work, .clients, .contact, .club, .page-portfolio').forEach(function (el) {
     io.observe(el);
   });
 

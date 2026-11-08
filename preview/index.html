@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Saira+Extra+Condensed:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=da42">
+  <link rel="stylesheet" href="styles.css?v=fb43">
   <script>
     try {
       sessionStorage.removeItem('virtuoseSeen');
@@ -30,18 +30,15 @@
 </head>
 <body>
   <nav class="nav">
-    <a class="nav-logo" href="index.html" aria-label="Agence Virtuose">
-      <img src="logos/agence-orange-rose.png" alt="Agence Virtuose">
-      <img src="logos/agence-violet-citron.png" alt="">
-      <img src="logos/agence-rose-violet.png" alt="">
-    </a>
+    <a class="nav-logo" href="index.html" aria-label="Agence Virtuose"><span class="logo-mark"></span></a>
     <button class="nav-menu" type="button" aria-expanded="false" aria-controls="siteMenu">Menu</button>
   </nav>
-  <a class="call-sticky" href="mailto:hello@agencevirtuose.fr">On s’appelle ?</a>
+  <a class="call-sticky" href="mailto:hello@agencevirtuose.fr">On s’écrit ?</a>
   <div class="menu" id="siteMenu" aria-hidden="true">
     <nav class="menu-list">
-      <a class="menu-link" href="#qui-sommes-nous"><span>Qui sommes-nous</span></a>
       <a class="menu-link" href="#realisations"><span>Nos réalisations</span></a>
+      <a class="menu-link" href="portfolio.html"><span>Portfolio</span></a>
+      <a class="menu-link" href="#qui-sommes-nous"><span>Qui sommes-nous</span></a>
       <a class="menu-link" href="#clients"><span>Nos clients</span></a>
       <a class="menu-link" href="#nous-contacter"><span>Nous contacter</span></a>
       <a class="menu-link" href="#rejoignez-nous"><span>Rejoignez-nous</span></a>
@@ -53,6 +50,7 @@
     <div class="hero-frame">
       <video class="hero-video" muted loop playsinline webkit-playsinline autoplay preload="metadata" poster="hero-poster.jpg"
         src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11acf25b2d7a918ab083b_header-virtuose-1080p.mp4"></video>
+      <div class="hero-veil" aria-hidden="true"></div>
     </div>
   </header>
 
@@ -89,61 +87,10 @@
     </div>
   </div>
 
-  <section class="about" id="qui-sommes-nous">
-    <h2 class="display" data-split>Qui sommes-nous ?</h2>
-    <div class="about-stage">
-      <p class="about-stamp" data-rise>On filme l’assiette.<br>On la met dans le feed.<br>On donne envie d’y aller.</p>
-      <div class="reveal reveal-a reveal-color" data-speed="0.07">
-        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg" alt="Tournage Sauce">
-      </div>
-      <p class="about-menu" data-rise>On shoot.<br>On filme.<br>On tient le fil<br>du feed.</p>
-      <div class="reveal reveal-b reveal-bw" data-speed="-0.05">
-        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d3ec_roar-burger-2.jpg" alt="Burger Roar">
-      </div>
-    </div>
-    <div class="about-fold">
-      <button class="about-fold-btn" type="button" aria-expanded="false" aria-controls="aboutMission">
-        <span>Notre mission</span>
-        <span class="about-fold-plus" aria-hidden="true"></span>
-      </button>
-      <div class="about-fold-panel" id="aboutMission">
-        <div class="about-fold-inner">
-          <div class="about-fold-grid">
-            <div>
-              <p class="about-lede">Virtuose, l’agence créative des marques Food</p>
-              <p>Nous créons des contenus visuels impactants et des stratégies digitales pensées pour faire rayonner les marques Food sur les réseaux sociaux.</p>
-              <p>De la production photo et vidéo à la gestion complète de votre image digitale, Virtuose accompagne les restaurants, franchises et concepts food dans leur développement avec une approche créative, moderne et différenciante.</p>
-              <p>Notre mission : créer une identité forte, générer de l’engagement et transformer votre présence digitale en véritable levier de croissance.</p>
-            </div>
-            <div>
-              <p>Nous proposons des services de création de contenus professionnels, de production photo et vidéo, ainsi que de stratégie digitale et de gestion des réseaux sociaux pour les entreprises et marques liées à l’univers de la food.</p>
-              <div class="about-stamp is-in about-fold-stamp">
-                <p class="about-fold-label">Services proposés :</p>
-                <ul>
-                  <li>
-                    <svg class="about-fold-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 3.2 28 16 5 28.8V3.2Z"/></svg>
-                    Production photo &amp; vidéo
-                  </li>
-                  <li>
-                    <svg class="about-fold-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 3.2 28 16 5 28.8V3.2Z"/></svg>
-                    Community management
-                  </li>
-                  <li>
-                    <svg class="about-fold-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 3.2 28 16 5 28.8V3.2Z"/></svg>
-                    Stratégie social media
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="work" id="realisations">
     <h2 class="display" data-split>Nos réalisations</h2>
-    <div class="work-rail">
+    <div class="js-rail work-rail">
       <div class="work-track">
         <div class="work-line">
           <a class="work-card" href="projets/black-and-white.html">
@@ -245,7 +192,37 @@
         </div>
       </div>
     </div>
+    <p class="section-more"><a href="portfolio.html">Voir plus</a></p>
   </section>
+
+  <section class="about" id="qui-sommes-nous">
+    <h2 class="display" data-split>Qui sommes-nous ?</h2>
+    <div class="about-stage">
+      <p class="about-stamp" data-rise>On filme l’assiette.<br>On la met dans le feed.<br>On donne envie d’y aller.</p>
+      <div class="reveal reveal-a reveal-color" data-speed="0.07">
+        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg" alt="Tournage Sauce">
+      </div>
+      <p class="about-menu" data-rise>On shoot.<br>On filme.<br>On tient le fil<br>du feed.</p>
+      <div class="reveal reveal-b reveal-bw" data-speed="-0.05">
+        <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d3ec_roar-burger-2.jpg" alt="Burger Roar">
+      </div>
+    </div>
+    <div class="mission" id="notre-mission">
+      <h3 class="mission-title">Notre mission</h3>
+      <div class="mission-layout">
+        <div class="mission-copy">
+          <p>Créer une identité forte, générer de l’engagement et transformer la présence digitale des marques Food en levier de croissance. Photo, vidéo, community et stratégie social media, pour les restaurants, franchises et concepts food.</p>
+        </div>
+        <ul class="mission-services">
+          <li>Production photo &amp; vidéo</li>
+          <li>Community management</li>
+          <li>Stratégie social media</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
 
   <section class="clients" id="clients">
     <h2 class="display display-on-dark" data-split>Nos clients</h2>
@@ -270,19 +247,9 @@
         <img loading="lazy" decoding="async" src="logos/aroma.png" alt="Aroma Caffè">
         <span class="client-cta">voir le projet</span>
       </a>
-      <a class="client" href="projets/buna.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f0be97da6a3438823a_buna-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/buna.png" alt="Buna">
-        <span class="client-cta">voir le projet</span>
-      </a>
       <a class="client" href="projets/nach.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7cebdee10de03b9da6_nach-1.jpg">
         <span class="client-blob" aria-hidden="true"></span>
         <img loading="lazy" decoding="async" src="logos/nach.png" alt="NACH!">
-        <span class="client-cta">voir le projet</span>
-      </a>
-      <a class="client" href="projets/nonna-teresa.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7d6c0f9545753fd5f7_nonna-teresa-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/nonna.png" alt="Nonna Teresa">
         <span class="client-cta">voir le projet</span>
       </a>
       <a class="client" href="projets/roar-burger.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e61749166798db201_roar-burger-1.jpg">
@@ -290,27 +257,8 @@
         <img loading="lazy" decoding="async" src="logos/roar.png" alt="Roar Burger">
         <span class="client-cta">voir le projet</span>
       </a>
-      <a class="client" href="projets/hash-burger.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a5018d56e104ffa8240_hash-burger-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/hash.png" alt="Hash Burger">
-        <span class="client-cta">voir le projet</span>
-      </a>
-      <a class="client" href="projets/kova.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7b4a1b7947708edc66_kova-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/kova.png" alt="Kova">
-        <span class="client-cta">voir le projet</span>
-      </a>
-      <a class="client" href="projets/sauce.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/sauce.png" alt="Sauce">
-        <span class="client-cta">voir le projet</span>
-      </a>
-      <a class="client" href="projets/cafe-alma.html" data-shot="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa119f2a9131788b2d56643_cafe-alma-1.jpg">
-        <span class="client-blob" aria-hidden="true"></span>
-        <img loading="lazy" decoding="async" src="logos/alma.png" alt="Café Alma">
-        <span class="client-cta">voir le projet</span>
-      </a>
     </div>
+    <p class="section-more section-more-on-dark"><a href="portfolio.html">Voir plus</a></p>
   </section>
 
   <section class="contact" id="nous-contacter">
@@ -327,10 +275,6 @@
         </div>
       </form>
       <div class="contact-aside" data-rise>
-        <a class="contact-card" href="tel:+33783278261">
-          <span class="contact-card-kicker">On s’appelle</span>
-          <span class="contact-card-val">07 83 27 82 61</span>
-        </a>
         <a class="contact-card" href="mailto:hello@agencevirtuose.fr">
           <span class="contact-card-kicker">On s’écrit</span>
           <span class="contact-card-val">hello@agencevirtuose.fr</span>
@@ -348,8 +292,12 @@
         <p>Événements, coulisses de prod, avant-premières. Une aventure humaine, créative et gourmande.</p>
         <a class="club-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScPBBNHlabCcFoORUrJ30517pAHPj2czUxGaZcl9nblQQNpNA/viewform" target="_blank" rel="noopener noreferrer">Nous rejoindre</a>
       </div>
-      <figure class="club-shot" data-rise>
-        <img loading="lazy" decoding="async" src="club-gros-gourmands.jpg" alt="T-shirt Club Gros Gourmands">
+      <figure class="club-collage" data-rise>
+        <img class="cc cc-a" loading="lazy" decoding="async" src="club-gros-gourmands.jpg" alt="Membre Club Gros Gourmands">
+        <img class="cc cc-b" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7e09c78e9b2b76d3ec_roar-burger-2.jpg" alt="Figurant shooting">
+        <img class="cc cc-c" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11aa5f14114d23bb2cdcf_sauce-1.jpg" alt="Tournage Sauce">
+        <img class="cc cc-d" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a7dbe97da6a3438d797_nach-2.jpg" alt="Shooting NACH">
+        <img class="cc cc-e" loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/6aa02deb3403bca8b8acff5d/6aa11a4ff3164524c527e55c_fatburger-2.jpg" alt="Shooting Fatburger">
         <div class="club-pills" aria-hidden="true">
           <span>200+ membres</span>
           <span>Shootings rémunérés</span>
@@ -390,11 +338,7 @@
         </svg>
       </a>
     </nav>
-    <a class="footer-logo" href="index.html" aria-label="Agence Virtuose">
-      <img src="logos/agence-orange-rose.png" alt="Agence Virtuose">
-      <img src="logos/agence-violet-citron.png" alt="">
-      <img src="logos/agence-rose-violet.png" alt="">
-    </a>
+    <a class="footer-logo" href="index.html" aria-label="Agence Virtuose"><span class="logo-mark"></span></a>
     <a class="footer-mail" href="mailto:hello@agencevirtuose.fr">hello@agencevirtuose.fr</a>
     </div>
     <p class="footer-legal">Tous droits réservés 2026</p>
@@ -406,6 +350,6 @@
   </div>
   <div class="grain" aria-hidden="true"></div>
 
-  <script src="app.js?v=da22"></script>
+  <script src="app.js?v=fb41"></script>
 </body>
 </html>
