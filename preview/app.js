@@ -519,6 +519,30 @@
     }, { passive: true });
   }
 
+  document.querySelectorAll('video.tile-loop').forEach(function (v) {
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
+    v.loop = true;
+  });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var loopWatch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          if (v.getAttribute('preload') === 'none') v.preload = 'auto';
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('video.tile-loop').forEach(function (v) {
+      loopWatch.observe(v);
+    });
+  }
+
   if (grid && peek && peekImg && fineHover) {
     grid.addEventListener('mouseleave', hidePeek);
 
