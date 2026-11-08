@@ -27,7 +27,7 @@
   --on-dark: #ffffff;
   --font-display: "Gopher", "Saira Extra Condensed", "Barlow Condensed", Impact, sans-serif;
   --font-script: Salted, Gopher, "Saira Extra Condensed", sans-serif;
-  --font-body: Inter, system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
   --section-y: clamp(72px, 9vh, 120px);
   --stack: clamp(36px, 5vh, 64px);
   --gap: clamp(72px, 8vh, 96px);
